@@ -13,12 +13,13 @@ class UserController extends Controller
 {
     public function index(): View
     {
-        $user = User::find(2);
+        $user = User::find(1);
         return view('phone.index', compact('user'));
     }
+    
     public function api_index(): JsonResource
     {
-        $user = User::find(1);
+        $user = User::find(2);
         return new UserResource($user);
     }
 }
