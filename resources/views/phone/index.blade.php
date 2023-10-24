@@ -7,9 +7,16 @@
     <title>User_phone</title>
 </head>
 <body>
-    <h1>{{ $user->name }}</h1>
+    {{-- <h1>{{ $user->name }}</h1>
     <h2>{{ $user->email }}</h2>
     <h2>{{ "El prefijo del pais es: ".$user->phone->prefix }}</h2>
-    <h2>{{ "El número del usuario es: ". $user->phone->phone_number }}</h2>
+    <h2>{{ "El número del usuario es: ". $user->phone->phone_number }}</h2> --}}
+
+    <h1>{{ $user->name }}</h1>
+    <ul>
+        @foreach ($user->roles as $role)
+            <li>Rol: {{$role->name}}</li>
+        @endforeach
+    </ul>
 </body>
 </html>
