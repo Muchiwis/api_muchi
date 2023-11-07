@@ -9,6 +9,7 @@ use Database\Seeders\ProductSeeder;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Js;
 
 class ProductController extends Controller
 {
@@ -20,13 +21,12 @@ class ProductController extends Controller
         $products = Product::all();
         return ProductResource::collection($products);
     }
-
-    public function store(ProductRequest $request): JsonResponse
+    public function store(Request $request): JsonResponse
     {
         $product = Product::create($request->all());
         return response()->json([
             'success' => true,
-            'data' => new ProductResource($product),
+            'data' => $product,
         ], 201);
     }
 
@@ -55,5 +55,10 @@ class ProductController extends Controller
         return response()->json([
             'success'=>true,
         ]);
+    }
+
+    public function ajax()
+    {
+        return view('ajax.ajax');
     }
 }
